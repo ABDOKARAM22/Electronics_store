@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 29, 2023 at 06:10 AM
+-- Generation Time: Jan 25, 2024 at 06:31 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -66,7 +66,7 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`username`, `id`, `f_name`, `l_name`, `email`, `Address`, `Contact_info`, `password`, `re_password`, `type`, `Date`) VALUES
-('Admin', 41, 'Abdelrahman', 'Karam', 'Admin66@gmail.com', NULL, NULL, '$2y$10$.soryR9w4hotQdD7mW2vruI7dXCgX08PrXzcc9MBUE2ycUekjFqC2', '$2y$10$98n4txrk8YWKVkOxxXphV.O5ITZl5etfulvH3l/vvREBC2Xu6hAA.', 1, '2023-08-29');
+('Admin', 41, 'Abdelrahman', 'Karam', 'Admin66@gmail.com', 'set', '01124800767', '$2y$10$.soryR9w4hotQdD7mW2vruI7dXCgX08PrXzcc9MBUE2ycUekjFqC2', '$2y$10$98n4txrk8YWKVkOxxXphV.O5ITZl5etfulvH3l/vvREBC2Xu6hAA.', 1, '2023-08-29');
 
 -- --------------------------------------------------------
 
@@ -83,6 +83,22 @@ CREATE TABLE `orders` (
   `order_date` date NOT NULL DEFAULT current_timestamp(),
   `received_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `id_for_user`, `id_for_product`, `Quantity`, `order_state`, `order_date`, `received_date`) VALUES
+(332, 41, 5, 1, 2, '2024-01-25', '2024-01-25'),
+(333, 41, 6, 1, 2, '2024-01-25', '2024-01-25'),
+(336, 41, 12, 1, 2, '2024-01-25', '2024-01-25'),
+(337, 41, 7, 1, 2, '2024-01-25', '2024-01-25'),
+(341, 41, 5, 1, 2, '2024-01-25', '2024-01-25'),
+(342, 41, 6, 1, 2, '2024-01-25', '2024-01-25'),
+(343, 41, 7, 1, 2, '2024-01-25', '2024-01-25'),
+(344, 41, 5, 1, 1, '2024-01-25', NULL),
+(345, 41, 6, 1, 1, '2024-01-25', NULL),
+(346, 41, 5, 1, 1, '2024-01-25', NULL);
 
 -- --------------------------------------------------------
 
@@ -141,7 +157,6 @@ ALTER TABLE `member`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id_for_user`,`id_for_product`),
   ADD UNIQUE KEY `order_id` (`id`);
 
 --
@@ -171,7 +186,7 @@ ALTER TABLE `member`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=332;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=347;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -182,13 +197,6 @@ ALTER TABLE `products`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `product_order` FOREIGN KEY (`id_for_product`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_order` FOREIGN KEY (`id_for_user`) REFERENCES `member` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `products`

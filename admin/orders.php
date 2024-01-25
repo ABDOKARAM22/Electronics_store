@@ -1,7 +1,7 @@
 <?php
 // Get all orders from the database
 $sql_select="SELECT `f_name`,`email`, orders.`id`,`product_name`, `Quantity` , `Quantity` * mid(`price`,2,11) as total_price ,
-`order_date` ,`order_state` , `received_date`
+`order_date` ,`order_state` , `received_date` , `Address` , `Contact_info`
 FROM `products` 
 join `orders`,`member` 
 where products.id= orders.id_for_product 
@@ -40,6 +40,8 @@ if($do=="Pending_orders"){
                                     <tr>
                                         <th>Client Name</th>
                                         <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Address</th>
                                         <th>Order id</th>
                                         <th>Product Name</th>
                                         <th>Quantity</th>
@@ -55,6 +57,8 @@ if($do=="Pending_orders"){
                                             <tr>
                                                 <td><?php echo $row['f_name'] ?></td>
                                                 <td><?php echo $row['email'] ?></td>
+                                                <td><?php echo $row['Contact_info'] ?></td>
+                                                <td><?php echo $row['Address'] ?></td>
                                                 <td><?php echo $row['id'] ?></td>
                                                 <td><?php echo $row['product_name'] ?></td>
                                                 <td><?php echo $row['Quantity'] ?></td>

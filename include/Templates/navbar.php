@@ -55,9 +55,9 @@
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form class="form-inline my-2 my-lg-0" action="<?php $_SERVER['PHP_SELF'] ?>" method="GET">
+          <input class="form-control mr-sm-2" name="Search" type="text" placeholder="Search" aria-label="Search">
+          <input class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit" value="Search">
         </form>
       </div>
     </div>
